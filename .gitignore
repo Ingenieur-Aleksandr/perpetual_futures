@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Jet Brains directories
+/.idea/
+
+# My own choice to ignore in this project
+/raw/
