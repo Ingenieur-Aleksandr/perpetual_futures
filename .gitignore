@@ -133,4 +133,4 @@ dmypy.json
 
 # My own choice to ignore in this project
 /raw/
-/notebooks/*
+/notebooks/20220922_Init.ipynb
