@@ -1,28 +1,43 @@
-# API parameters
+#================ API parameters ================#
 [Binance] # API parameters for Binance
 head = 'https://fapi.binance.com'
 [Binance.futures_list]
 method = 'GET'
-query = '/fapi/v1/exchangeInfo'
+[Binance.futures_list.request]
+address = '/fapi/v1/exchangeInfo'
 [Binance.historical_data]
 method = 'GET'
-query = '/fapi/v1/klines'
-[Binance.data.parameters]
-symbol = ''
-interval = ''
-startTime = ''
-endTime = ''
-limit = ''
+[Binance.historical_data.request]
+address = '/fapi/v1/klines'
+# [Binance.historical_data.parameters]
+# symbol = ''
+# interval = ''
+# startTime = ''
+# endTime = ''
+# limit = ''
+[Binance.historical_data.parameters_mapping]
+ticker = 'symbol'
+candle_interval = 'interval'
+start_time = 'startTime'
+end_time = 'endTime'
+
 [FTX] # API parameters for FTX
 head = 'https://ftx.com/api'
 [FTX.futures_list]
 method = 'GET'
-query = '/futures'
+[FTX.futures_list.request]
+address = '/futures'
 [FTX.historical_data]
 method = 'GET'
-query = '/markets/{market_name}/candles'
+[FTX.historical_data.request]
+address = '/markets/{market_name}/candles'
 replaceable = '{market_name}'
-[FTX.data.parameters]
-resolution = ''
-start_time = ''
-end_time = ''
+# [FTX.historical_data.parameters]
+# resolution = ''
+# start_time = ''
+# end_time = ''
+[FTX.historical_data.parameters_mapping]
+ticker = 'replaceable'
+candle_interval = 'resolution'
+start_time = 'start_time'
+end_time = 'end_time'
