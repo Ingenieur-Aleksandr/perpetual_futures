@@ -5,17 +5,17 @@ head = 'https://fapi.binance.com'
 method = 'GET'
 [Binance.futures_list.request]
 address = '/fapi/v1/exchangeInfo'
-[Binance.historical_data]
+[Binance.historical_prices]
 method = 'GET'
-[Binance.historical_data.request]
+[Binance.historical_prices.request]
 address = '/fapi/v1/klines'
-# [Binance.historical_data.parameters]
+# [Binance.historical_prices.parameters]
 # symbol = ''
 # interval = ''
 # startTime = ''
 # endTime = ''
 # limit = ''
-[Binance.historical_data.parameters_mapping]
+[Binance.historical_prices.parameters_mapping]
 ticker = 'symbol'
 candle_interval = 'interval'
 start_time = 'startTime'
@@ -27,17 +27,25 @@ head = 'https://ftx.com/api'
 method = 'GET'
 [FTX.futures_list.request]
 address = '/futures'
-[FTX.historical_data]
+[FTX.historical_prices]
 method = 'GET'
-[FTX.historical_data.request]
+[FTX.historical_prices.request]
 address = '/markets/{market_name}/candles'
 replaceable = '{market_name}'
-# [FTX.historical_data.parameters]
+# [FTX.historical_prices.parameters]
 # resolution = ''
 # start_time = ''
 # end_time = ''
-[FTX.historical_data.parameters_mapping]
+[FTX.historical_prices.parameters_mapping]
 ticker = 'replaceable'
 candle_interval = 'resolution'
+start_time = 'start_time'
+end_time = 'end_time'
+[FTX.funding_rates]
+method = 'GET'
+[FTX.funding_rates.request]
+address = '/funding_rates'
+[FTX.funding_rates.parameters_mapping]
+ticker = 'future'
 start_time = 'start_time'
 end_time = 'end_time'
