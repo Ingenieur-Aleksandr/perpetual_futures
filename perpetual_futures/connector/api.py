@@ -1,6 +1,7 @@
 import json
 import requests
-import toml
+import yaml
+from yaml import Loader, Dumper
 from copy import deepcopy
 
 
@@ -33,10 +34,19 @@ class API:
     """
     __version__ = '0.0.1'
 
-    def __init__(self, config_path='settings.toml', exchange_source='FTX'):
+    def __init__(self, config_path='settings.yaml', exchange_source='FTX'):
         self.config_path = config_path
         self.exchange_source = exchange_source
-        self.config = toml.load(self.config_path)[self.exchange_source]
+        with open(self.config_path, 'r') as config_file:
+            self.config = yaml.load(config_file, Loader)[self.exchange_source]
+
+    def __str__(self):
+        return (
+            f'API OBJECT\n'
+            f"* Current version: {__version__}\n"
+            f"* Chosen exchange as data source: {self.exchange_source}\n"
+            f"* Path to current configuration file: {self.config_path}"
+        )
 
     def get_all_available_futures(self):
         """

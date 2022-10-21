@@ -1,0 +1,51 @@
+#================ API parameters ================#
+Binance: # API parameters for Binance
+  head: 'https://fapi.binance.com'
+  futures_list:
+    method: 'GET'
+    request:
+      address: '/fapi/v1/exchangeInfo'
+  historical_prices:
+    method: 'GET'
+    request:
+      address: '/fapi/v1/klines'
+#    parameters:
+#      symbol: ''
+#      interval: ''
+#      startTime: ''
+#      endTime: ''
+#      limit: ''
+    parameters_mapping:
+      ticker: 'symbol'
+      candle_interva: 'interval'
+      start_time: 'startTime'
+      end_time: 'endTime'
+
+FTX: # API parameters for FTX
+  head: 'https://ftx.com/api'
+  futures_list:
+    method: 'GET'
+    request:
+      address: '/futures'
+  historical_prices:
+    method: 'GET'
+    request:
+      address: '/markets/{market_name}/candles'
+      replaceable: '{market_name}'
+#    parameters:
+#      resolution: ''
+#      start_time: ''
+#      end_time: ''
+    parameters_mapping:
+      ticker: 'replaceable'
+      candle_interval: 'resolution'
+      start_time: 'start_time'
+      end_time: 'end_time'
+  funding_rates:
+    method: 'GET'
+    request:
+      address: '/funding_rates'
+    parameters_mapping:
+      ticker: 'future'
+      start_time: 'start_time'
+      end_time: 'end_time'
