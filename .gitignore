@@ -133,3 +133,6 @@ dmypy.json
 
 # My own choice to ignore in this project
 /raw/
+/notebooks/20220922_Init.ipynb
+/notebooks/20221011_I_stage_Sharifullin_Aleksandr.ipynb
+/notebooks/Kozhevnikov_Evgeniy.ipynb
